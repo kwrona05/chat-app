@@ -23,6 +23,12 @@ function App() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      sendMessage();
+    }
+  };
+
   return (
     <div>
       <div className="chat-window">
@@ -30,8 +36,16 @@ function App() {
           <div key={index}>{msg}</div>
         ))}
       </div>
-      <input type='text' value={inputValue} onChange={(e) => setInputValue(e.target.value)}
-      onKeyDown={}
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+        placeholder="Enter your message"
+      />
+      <button onClick={sendMessage}>Send</button>
     </div>
   );
 }
+
+export default App;
